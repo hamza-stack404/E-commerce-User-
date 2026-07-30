@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Categories — Nova Market</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+<style type="text/tailwindcss">
+  @theme {
+    --font-serif: 'Fraunces', serif;
+    --font-sans: 'Inter', sans-serif;
+    --color-ivory: #FAF7F2;
+    --color-ink: #1C1917;
+    --color-rust: #A8442E;
+    --color-forest: #2F4538;
+  }
+</style>
+</head>
+<body class="bg-ivory text-ink font-sans">
+
+  <div class="bg-ink text-ivory text-xs tracking-wide text-center py-2">
+    Free shipping on orders over $75 · Handpicked, always in stock
+  </div>
+
+  <header class="sticky top-0 z-30 bg-ivory/95 border-b border-ink/10">
+    <div class="max-w-7xl mx-auto px-6 lg:px-10 flex items-center justify-between h-20">
+      <a href="index.html" class="font-serif text-2xl font-medium tracking-tight">Nova<span class="text-rust">.</span></a>
+      <nav class="hidden md:flex items-center gap-9 text-sm font-medium">
+        <a href="index.html" class="hover:text-rust">Home</a>
+        <a href="categories.html" class="text-rust">Categories</a>
+        <a href="product.html" class="hover:text-rust">Shop</a>
+        <a href="index.html#about" class="hover:text-rust">About</a>
+      </nav>
+      <div class="flex items-center gap-5">
+        <button aria-label="Search" class="hover:text-rust">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg>
+        </button>
+        <a href="login.html" aria-label="Account" class="hover:text-rust">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-6 8-6s8 2 8 6"/></svg>
+        </a>
+        <a href="cart.html" aria-label="Cart" class="relative hover:text-rust">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><path d="M3 6h2l1.6 10.6A2 2 0 0 0 8.6 18h8.8a2 2 0 0 0 2-1.7L21 8H6"/><circle cx="9" cy="21" r="1"/><circle cx="18" cy="21" r="1"/></svg>
+          <span class="absolute -top-2 -right-2 w-4 h-4 bg-rust text-white text-[10px] rounded-full flex items-center justify-center">2</span>
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Page header -->
+  <section class="max-w-7xl mx-auto px-6 lg:px-10 pt-14 pb-10">
+    <p class="font-serif italic text-rust text-lg mb-3">The full catalog</p>
+    <h1 class="font-serif text-4xl md:text-5xl font-medium leading-tight max-w-xl">Browse by category</h1>
+  </section>
+
+  <!-- Category grid -->
+  <section class="max-w-7xl mx-auto px-6 lg:px-10 pb-24">
+    <div id="categories-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+
+      <a href="product.html" class="group block border border-ink/10 rounded-sm overflow-hidden">
+        <div class="aspect-[4/3] bg-[#EFEAE0] flex items-center justify-center text-ink/20 font-serif text-xs">Category photo</div>
+        <div class="p-5 flex items-center justify-between">
+          <div>
+            <p class="font-serif text-lg">Home</p>
+            <p class="text-xs text-ink/40 mt-0.5">24 products</p>
+          </div>
+          <span class="text-rust opacity-0 group-hover:opacity-100">→</span>
+        </div>
+      </a>
+
+      <a href="product.html" class="group block border border-ink/10 rounded-sm overflow-hidden">
+        <div class="aspect-[4/3] bg-[#EFEAE0] flex items-center justify-center text-ink/20 font-serif text-xs">Category photo</div>
+        <div class="p-5 flex items-center justify-between">
+          <div>
+            <p class="font-serif text-lg">Apparel</p>
+            <p class="text-xs text-ink/40 mt-0.5">41 products</p>
+          </div>
+          <span class="text-rust opacity-0 group-hover:opacity-100">→</span>
+        </div>
+      </a>
+
+      <a href="product.html" class="group block border border-ink/10 rounded-sm overflow-hidden">
+        <div class="aspect-[4/3] bg-[#EFEAE0] flex items-center justify-center text-ink/20 font-serif text-xs">Category photo</div>
+        <div class="p-5 flex items-center justify-between">
+          <div>
+            <p class="font-serif text-lg">Electronics</p>
+            <p class="text-xs text-ink/40 mt-0.5">18 products</p>
+          </div>
+          <span class="text-rust opacity-0 group-hover:opacity-100">→</span>
+        </div>
+      </a>
+
+      <a href="product.html" class="group block border border-ink/10 rounded-sm overflow-hidden">
+        <div class="aspect-[4/3] bg-[#EFEAE0] flex items-center justify-center text-ink/20 font-serif text-xs">Category photo</div>
+        <div class="p-5 flex items-center justify-between">
+          <div>
+            <p class="font-serif text-lg">Beauty</p>
+            <p class="text-xs text-ink/40 mt-0.5">12 products</p>
+          </div>
+          <span class="text-rust opacity-0 group-hover:opacity-100">→</span>
+        </div>
+      </a>
+
+      <a href="product.html" class="group block border border-ink/10 rounded-sm overflow-hidden">
+        <div class="aspect-[4/3] bg-[#EFEAE0] flex items-center justify-center text-ink/20 font-serif text-xs">Category photo</div>
+        <div class="p-5 flex items-center justify-between">
+          <div>
+            <p class="font-serif text-lg">Outdoors</p>
+            <p class="text-xs text-ink/40 mt-0.5">9 products</p>
+          </div>
+          <span class="text-rust opacity-0 group-hover:opacity-100">→</span>
+        </div>
+      </a>
+
+      <a href="product.html" class="group block border border-ink/10 rounded-sm overflow-hidden">
+        <div class="aspect-[4/3] bg-[#EFEAE0] flex items-center justify-center text-ink/20 font-serif text-xs">Category photo</div>
+        <div class="p-5 flex items-center justify-between">
+          <div>
+            <p class="font-serif text-lg">Swimming</p>
+            <p class="text-xs text-ink/40 mt-0.5">6 products</p>
+          </div>
+          <span class="text-rust opacity-0 group-hover:opacity-100">→</span>
+        </div>
+      </a>
+
+    </div>
+  </section>
+
+  <footer class="border-t border-ink/10">
+    <div class="max-w-7xl mx-auto px-6 lg:px-10 py-14 grid grid-cols-2 md:grid-cols-4 gap-10">
+      <div class="col-span-2 md:col-span-1">
+        <p class="font-serif text-xl font-medium mb-3">Nova<span class="text-rust">.</span></p>
+        <p class="text-sm text-ink/50 leading-relaxed">Considered goods for a quieter kind of home.</p>
+      </div>
+      <div>
+        <p class="text-xs tracking-widest text-ink/40 mb-4">SHOP</p>
+        <ul class="space-y-2 text-sm">
+          <li><a href="categories.html" class="hover:text-rust">Categories</a></li>
+          <li><a href="product.html" class="hover:text-rust">All Products</a></li>
+          <li><a href="cart.html" class="hover:text-rust">Cart</a></li>
+        </ul>
+      </div>
+      <div>
+        <p class="text-xs tracking-widest text-ink/40 mb-4">ACCOUNT</p>
+        <ul class="space-y-2 text-sm">
+          <li><a href="login.html" class="hover:text-rust">Sign In</a></li>
+          <li><a href="signup.html" class="hover:text-rust">Create Account</a></li>
+          <li><a href="profile.html" class="hover:text-rust">My Profile</a></li>
+        </ul>
+      </div>
+      <div>
+        <p class="text-xs tracking-widest text-ink/40 mb-4">HELP</p>
+        <ul class="space-y-2 text-sm">
+          <li><a href="#" class="hover:text-rust">Shipping</a></li>
+          <li><a href="#" class="hover:text-rust">Returns</a></li>
+          <li><a href="#" class="hover:text-rust">Contact</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="border-t border-ink/10 py-6 text-center text-xs text-ink/40">© 2026 Nova Market. All rights reserved.</div>
+  </footer>
+
+</body>
+</html>

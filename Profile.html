@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>My Profile — Nova Market</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+<style type="text/tailwindcss">
+  @theme {
+    --font-serif: 'Fraunces', serif;
+    --font-sans: 'Inter', sans-serif;
+    --color-ivory: #FAF7F2;
+    --color-ink: #1C1917;
+    --color-rust: #A8442E;
+    --color-forest: #2F4538;
+  }
+</style>
+</head>
+<body class="bg-ivory text-ink font-sans">
+
+  <div class="bg-ink text-ivory text-xs tracking-wide text-center py-2">
+    Free shipping on orders over $75 · Handpicked, always in stock
+  </div>
+
+  <header class="sticky top-0 z-30 bg-ivory/95 border-b border-ink/10">
+    <div class="max-w-7xl mx-auto px-6 lg:px-10 flex items-center justify-between h-20">
+      <a href="index.html" class="font-serif text-2xl font-medium tracking-tight">Nova<span class="text-rust">.</span></a>
+      <nav class="hidden md:flex items-center gap-9 text-sm font-medium">
+        <a href="index.html" class="hover:text-rust">Home</a>
+        <a href="categories.html" class="hover:text-rust">Categories</a>
+        <a href="product.html" class="hover:text-rust">Shop</a>
+        <a href="index.html#about" class="hover:text-rust">About</a>
+      </nav>
+      <div class="flex items-center gap-5">
+        <button aria-label="Search" class="hover:text-rust">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg>
+        </button>
+        <a href="profile.html" aria-label="Account" class="text-rust">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-6 8-6s8 2 8 6"/></svg>
+        </a>
+        <a href="cart.html" aria-label="Cart" class="relative hover:text-rust">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><path d="M3 6h2l1.6 10.6A2 2 0 0 0 8.6 18h8.8a2 2 0 0 0 2-1.7L21 8H6"/><circle cx="9" cy="21" r="1"/><circle cx="18" cy="21" r="1"/></svg>
+          <span class="absolute -top-2 -right-2 w-4 h-4 bg-rust text-white text-[10px] rounded-full flex items-center justify-center">2</span>
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <section class="max-w-6xl mx-auto px-6 lg:px-10 pt-14 pb-6">
+    <p class="font-serif italic text-rust text-lg mb-2">Welcome back</p>
+    <h1 id="profile-name" class="font-serif text-4xl md:text-5xl font-medium">Hamza Sajjad</h1>
+  </section>
+
+  <section class="max-w-6xl mx-auto px-6 lg:px-10 pb-24 grid grid-cols-1 lg:grid-cols-12 gap-12">
+
+    <!-- Sidebar -->
+    <div class="lg:col-span-3">
+      <nav class="flex lg:flex-col gap-2 text-sm">
+        <a href="#account-details" class="px-4 py-2.5 rounded-sm bg-ink text-ivory font-medium">Account Details</a>
+        <a href="#order-history" class="px-4 py-2.5 rounded-sm hover:bg-[#F1ECE2] font-medium">Order History</a>
+        <a href="login.html" class="px-4 py-2.5 rounded-sm hover:bg-[#F1ECE2] font-medium text-ink/60">Log Out</a>
+      </nav>
+    </div>
+
+    <!-- Content -->
+    <div class="lg:col-span-9 space-y-14">
+
+      <!-- Account details -->
+      <div id="account-details">
+        <p class="font-serif text-2xl mb-6">Account Details</p>
+        <form class="grid grid-cols-1 sm:grid-cols-2 gap-5 max-w-2xl">
+          <div>
+            <label class="block text-sm font-medium mb-1.5">Full Name</label>
+            <input id="profile-fullname" type="text" value="Hamza Sajjad" class="w-full px-4 py-3 border border-ink/20 rounded-sm text-sm focus:outline-none focus:border-rust">
+          </div>
+          <div>
+            <label class="block text-sm font-medium mb-1.5">Email</label>
+            <input id="profile-email" type="email" value="hamzasajjad2032009@gmail.com" disabled class="w-full px-4 py-3 border border-ink/10 bg-[#F1ECE2] rounded-sm text-sm text-ink/50">
+          </div>
+          <div>
+            <label class="block text-sm font-medium mb-1.5">Phone</label>
+            <input id="profile-phone" type="tel" placeholder="03xx-xxxxxxx" class="w-full px-4 py-3 border border-ink/20 rounded-sm text-sm focus:outline-none focus:border-rust">
+          </div>
+          <div>
+            <label class="block text-sm font-medium mb-1.5">Address</label>
+            <input id="profile-address" type="text" placeholder="Street, City" class="w-full px-4 py-3 border border-ink/20 rounded-sm text-sm focus:outline-none focus:border-rust">
+          </div>
+          <button type="submit" class="sm:col-span-2 bg-ink text-ivory px-6 py-3 text-sm font-medium hover:bg-rust w-fit">
+            Save Changes
+          </button>
+        </form>
+      </div>
+
+      <!-- Order history -->
+      <div id="order-history">
+        <p class="font-serif text-2xl mb-6">Order History</p>
+        <div id="orders-list" class="divide-y divide-ink/10 border-y border-ink/10">
+          <div class="py-5 flex items-center justify-between">
+            <div>
+              <p class="font-medium text-sm">#ORD-1042</p>
+              <p class="text-xs text-ink/40 mt-1">Placed on Jul 24, 2026 · 3 items</p>
+            </div>
+            <div class="flex items-center gap-4">
+              <span class="px-2.5 py-1 rounded-full text-xs font-medium bg-[#FBEFE0] text-[#93590C]">Pending</span>
+              <p class="font-medium text-sm w-16 text-right">$86.00</p>
+            </div>
+          </div>
+          <div class="py-5 flex items-center justify-between">
+            <div>
+              <p class="font-medium text-sm">#ORD-1035</p>
+              <p class="text-xs text-ink/40 mt-1">Placed on Jul 10, 2026 · 1 item</p>
+            </div>
+            <div class="flex items-center gap-4">
+              <span class="px-2.5 py-1 rounded-full text-xs font-medium bg-[#EAF2EA] text-forest">Delivered</span>
+              <p class="font-medium text-sm w-16 text-right">$48.00</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <footer class="border-t border-ink/10">
+    <div class="max-w-7xl mx-auto px-6 lg:px-10 py-14 grid grid-cols-2 md:grid-cols-4 gap-10">
+      <div class="col-span-2 md:col-span-1">
+        <p class="font-serif text-xl font-medium mb-3">Nova<span class="text-rust">.</span></p>
+        <p class="text-sm text-ink/50 leading-relaxed">Considered goods for a quieter kind of home.</p>
+      </div>
+      <div>
+        <p class="text-xs tracking-widest text-ink/40 mb-4">SHOP</p>
+        <ul class="space-y-2 text-sm">
+          <li><a href="categories.html" class="hover:text-rust">Categories</a></li>
+          <li><a href="product.html" class="hover:text-rust">All Products</a></li>
+          <li><a href="cart.html" class="hover:text-rust">Cart</a></li>
+        </ul>
+      </div>
+      <div>
+        <p class="text-xs tracking-widest text-ink/40 mb-4">ACCOUNT</p>
+        <ul class="space-y-2 text-sm">
+          <li><a href="login.html" class="hover:text-rust">Sign In</a></li>
+          <li><a href="signup.html" class="hover:text-rust">Create Account</a></li>
+          <li><a href="profile.html" class="hover:text-rust">My Profile</a></li>
+        </ul>
+      </div>
+      <div>
+        <p class="text-xs tracking-widest text-ink/40 mb-4">HELP</p>
+        <ul class="space-y-2 text-sm">
+          <li><a href="#" class="hover:text-rust">Shipping</a></li>
+          <li><a href="#" class="hover:text-rust">Returns</a></li>
+          <li><a href="#" class="hover:text-rust">Contact</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="border-t border-ink/10 py-6 text-center text-xs text-ink/40">© 2026 Nova Market. All rights reserved.</div>
+  </footer>
+
+  <!-- js/profile.js will load real user data + real orders in Phase 3 -->
+</body>
+</html>
