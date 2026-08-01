@@ -52,7 +52,7 @@ Form.addEventListener("submit", async (stop) => {
 
         let delete_cart = await supabase.from("cart_items").delete().eq("user_id", userID)
 
-        window.location.href = "profile.html"
+        window.location.href = "Profile.html"
 
     }
 })
