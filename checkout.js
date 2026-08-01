@@ -20,7 +20,7 @@ Form.addEventListener("submit", async (stop) => {
 
         let cartResult = await supabase.from("cart_items").select("*, products(name, price)").eq("user_id", userID)
 
-        let subtotal = []
+        let subtotal = 0
 
         cartResult.data.forEach(item => {
             subtotal = subtotal + (item.products.price * item.quantity)
@@ -50,7 +50,7 @@ Form.addEventListener("submit", async (stop) => {
 
         let items = await supabase.from("order_items").insert(order_item) 
 
-        let delete_cart = await supabase.from("cart_items").delete().eq("user_id", userId)
+        let delete_cart = await supabase.from("cart_items").delete().eq("user_id", userID)
 
         window.location.href = "Profile.html"
 
