@@ -28,7 +28,6 @@ result.data.forEach(item => {
     <div class="w-24 h-28 bg-[#EFEAE0] rounded-sm shrink-0 flex items-center justify-center text-ink/20 font-serif text-[10px]">Photo</div>
     <div class="flex-1 flex flex-col justify-between">
         <div class="flex items-start justify-between gap-4">
-        ${item.products.image_url ? `<img src="${item.products.image_url}" class="w-24 h-28 object-cover rounded-sm shrink-0" />` : `<div class="w-24 h-28 bg-[#EFEAE0] rounded-sm shrink-0 flex items-center justify-center text-ink/20 font-serif text-[10px]">Photo</div>`}
             <div>
                 <p class="font-serif text-lg">${item.products.name}</p>
             </div>
