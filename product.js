@@ -9,7 +9,28 @@ let param = new URLSearchParams(window.location.search)
 let ID = param.get("id")
 
 
-let result = await supabase.from("products").select("*, categories(name)").eq("id", ID)
+if (!ID) {
+    document.getElementById("product-detail-section").classList.add("hidden")
+    document.getElementById("shop-all-section").classList.remove("hidden")
+
+    let allResult = await supabase.from("products").select("*, categories(name)")
+
+    let cardsHTML = ""
+    allResult.data.forEach(function (product) {
+        cardsHTML += `<a href="product.html?id=${product.id}" class="group block">
+            ${product.image_url 
+                ? `<img src="${product.image_url}" class="aspect-[3/4] object-cover rounded-sm mb-4 w-full">` 
+                : `<div class="aspect-[3/4] bg-[#EFEAE0] rounded-sm mb-4 flex items-center justify-center text-ink/20 font-serif text-xs">Product photo</div>`
+            }
+            <p class="text-xs text-ink/40 mb-1">${product.categories ? product.categories.name : ""}</p>
+            <p class="font-medium text-sm group-hover:text-rust">${product.name}</p>
+            <p class="text-ink/60 text-sm mt-1">$${product.price}</p>
+        </a>`
+    })
+
+    document.getElementById("shop-all-grid").innerHTML = cardsHTML
+} else {
+   let result = await supabase.from("products").select("*, categories(name)").eq("id", ID)
 
 if (result.data[0]) {
     let product = result.data[0]
@@ -55,6 +76,12 @@ document.getElementById("add-to-cart-btn").addEventListener('click', async () =>
             quantity: Quantity
         })
     }
+
+    alert("Item added to cart!")
 })
+}
+
+
+
 
 
