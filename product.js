@@ -30,97 +30,72 @@ if (!ID) {
 
     document.getElementById("shop-all-grid").innerHTML = cardsHTML
 } else {
-   let result = await supabase.from("products").select("*, categories(name)").eq("id", ID)
+    let result = await supabase.from("products").select("*, categories(name)").eq("id", ID)
 
-if (result.data[0]) {
-    let product = result.data[0]
-    document.getElementById("product-title").textContent = product.name
-    document.getElementById("product-price").textContent = "$" + product.price
-    document.getElementById("product-description").textContent = product.description
-   document.getElementById("product-category").textContent = product.categories ? product.categories.name.toUpperCase() : ""
-    document.getElementById("add-to-cart-btn").textContent = "Add to Cart — $" + product.price
+     if (result.data[0]) {
+        let product = result.data[0]
+        document.getElementById("product-title").textContent = product.name
+        document.getElementById("product-price").textContent = "$" + product.price
+        document.getElementById("product-description").textContent = product.description
+        document.getElementById("product-category").textContent = product.categories ? product.categories.name.toUpperCase() : ""
+        document.getElementById("add-to-cart-btn").textContent = "Add to Cart — $" + product.price
     
 
-    if (product.image_url) {
-        document.getElementById("product-main-image").innerHTML = `<img src="${product.image_url}" class="w-full h-full object-cover rounded-sm">`
-    } else {
-        
-    }
+        if (product.image_url) {
+            document.getElementById("product-main-image").innerHTML = `<img src="${product.image_url}" class="w-full h-full object-cover rounded-sm">`
+        }
 
-    if (result.data[0]) {
-    let product = result.data[0]
-    document.getElementById("product-title").textContent = product.name
-    document.getElementById("product-price").textContent = "$" + product.price
-    document.getElementById("product-description").textContent = product.description
-   document.getElementById("product-category").textContent = product.categories ? product.categories.name.toUpperCase() : ""
-    document.getElementById("add-to-cart-btn").textContent = "Add to Cart — $" + product.price
-    
+        let relatedResult = await supabase.from("products")
+            .select("*, categories(name)")
+            .eq("category_id", product.category_id)
+            .neq("id", ID)
+            .limit(4)
 
-    if (product.image_url) {
-        document.getElementById("product-main-image").innerHTML = `<img src="${product.image_url}" class="w-full h-full object-cover rounded-sm">`
-    } else {
-        
-    }
+             let relatedHTML = ""
 
-    
-    let relatedResult = await supabase.from("products")
-        .select("*, categories(name)")
-        .eq("category_id", product.category_id)
-        .neq("id", ID)
-        .limit(4)
-
-    let relatedHTML = ""
-
-    relatedResult.data.forEach(function (relatedProduct) {
-        relatedHTML += `<a href="product.html?id=${relatedProduct.id}" class="group block">
-            ${relatedProduct.image_url 
-                ? `<img src="${relatedProduct.image_url}" class="aspect-[3/4] object-cover rounded-sm mb-4 w-full">` 
-                : `<div class="aspect-[3/4] bg-[#EFEAE0] rounded-sm mb-4 flex items-center justify-center text-ink/20 font-serif text-xs">Product photo</div>`
-            }
-            <p class="text-xs text-ink/40 mb-1">${relatedProduct.categories ? relatedProduct.categories.name : ""}</p>
-            <p class="font-medium text-sm group-hover:text-rust">${relatedProduct.name}</p>
-            <p class="text-ink/60 text-sm mt-1">$${relatedProduct.price}</p>
-        </a>`
-    })
-
-    document.getElementById("related-products").innerHTML = relatedHTML
-    
-
-}
-
-}
-
-
-document.getElementById("add-to-cart-btn").addEventListener('click', async () => {
-    let Quantity = Number(document.getElementById("qty-input").value)
-
-
-    let User = await supabase.auth.getSession()
-
-    if (User.data.session === null) {
-        window.location.href = "login.html"
-        return
-    }
-
-    let userid = User.data.session.user.id
-
-    let existing = await supabase.from("cart_items").select("*").eq("user_id", userid).eq("product_id", ID)
-
-    if (existing.data.length > 0) {
-        let newQty = existing.data[0].quantity + Quantity
-        await supabase.from("cart_items").update({ quantity: newQty }).eq("id", existing.data[0].id)
-
-    } else {
-         await supabase.from("cart_items").insert({
-            user_id: userid,
-            product_id: ID,
-            quantity: Quantity
+        relatedResult.data.forEach(function (relatedProduct) {
+            relatedHTML += `<a href="product.html?id=${relatedProduct.id}" class="group block">
+                ${relatedProduct.image_url 
+                    ? `<img src="${relatedProduct.image_url}" class="aspect-[3/4] object-cover rounded-sm mb-4 w-full">` 
+                    : `<div class="aspect-[3/4] bg-[#EFEAE0] rounded-sm mb-4 flex items-center justify-center text-ink/20 font-serif text-xs">Product photo</div>`
+                }
+                <p class="text-xs text-ink/40 mb-1">${relatedProduct.categories ? relatedProduct.categories.name : ""}</p>
+                <p class="font-medium text-sm group-hover:text-rust">${relatedProduct.name}</p>
+                <p class="text-ink/60 text-sm mt-1">$${relatedProduct.price}</p>
+            </a>`
         })
+
+        document.getElementById("related-products").innerHTML = relatedHTML
     }
 
-    alert("Item added to cart!")
-})
-}
+     document.getElementById("add-to-cart-btn").addEventListener('click', async () => {
+        let Quantity = Number(document.getElementById("qty-input").value)
+
+        let User = await supabase.auth.getSession()
+
+        if (User.data.session === null) {
+            window.location.href = "login.html"
+            return
+        }
+
+        let userid = User.data.session.user.id
+
+        let existing = await supabase.from("cart_items").select("*").eq("user_id", userid).eq("product_id", ID)
+
+        if (existing.data.length > 0) {
+            let newQty = existing.data[0].quantity + Quantity
+            await supabase.from("cart_items").update({ quantity: newQty }).eq("id", existing.data[0].id)
+        } else {
+            await supabase.from("cart_items").insert({
+                user_id: userid,
+                product_id: ID,
+                quantity: Quantity
+            })
+        }
+
+        alert("Item added to cart!")
+    })
+}  
 
 
 
