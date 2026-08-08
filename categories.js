@@ -33,3 +33,9 @@ if (result.error) {
 
     document.getElementById("categories-grid").innerHTML = CardHtml
 }
+
+let accountSessionCheck = await supabase.auth.getSession()
+
+if (accountSessionCheck.data.session !== null) {
+    document.getElementById("account-link").href = "profile.html"
+}

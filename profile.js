@@ -63,6 +63,11 @@ document.querySelector("#account-details form").addEventListener("submit", async
     }).eq("id", userId)
 
     alert("Profile updated!")
+
+    document.getElementById("logout-btn").addEventListener("click", async () => {
+        await supabase.auth.signOut()
+        window.location.href = "login.html"
+    })
 })
   
   }

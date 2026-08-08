@@ -30,3 +30,9 @@ if (result.error) {
     document.getElementById("featured-products").innerHTML = CardHTML
 
 }
+
+let accountSessionCheck = await supabase.auth.getSession()
+
+if (accountSessionCheck.data.session !== null) {
+    document.getElementById("account-link").href = "profile.html"
+}
