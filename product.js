@@ -94,7 +94,21 @@ if (!ID) {
         }
 
         alert("Item added to cart!")
-    })
+
+        document.getElementById("qty-minus").addEventListener("click", () =>{
+            let current = Number(document.getElementById("qty-input").value)
+            let NewQty = Math.max(1, current - 1)
+            document.getElementById("qty-input").value = NewQty
+        })
+
+        document.getElementById("qty-plus").addEventListener("click", () =>{
+            let current = Number(document.getElementById("qty-input").value)
+            let NewQty = current + 1
+            document.getElementById("qty-input").value = NewQty
+
+        })
+
+    })  
 }  
 
 
