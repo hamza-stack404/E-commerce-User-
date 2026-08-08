@@ -117,7 +117,7 @@ if (!ID) {
 let accountSessionCheck = await supabase.auth.getSession()
 
 if (accountSessionCheck.data.session !== null) {
-    document.getElementById("account-link").href = "profile.html"
+    document.getElementById("account-link").href = "Profile.html"
 }
 
 
