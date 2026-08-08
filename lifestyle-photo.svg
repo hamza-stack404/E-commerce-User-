@@ -1,0 +1,45 @@
+<svg viewBox="0 0 500 500" xmlns="http://www.w3.org/2000/svg">
+  <rect width="500" height="500" fill="#E2D9C7"/>
+
+  <!-- soft window light -->
+  <rect x="330" y="40" width="120" height="180" rx="4" fill="#FAF7F2" opacity="0.55"/>
+  <line x1="390" y1="40" x2="390" y2="220" stroke="#1C1917" stroke-width="2" opacity="0.15"/>
+  <line x1="330" y1="130" x2="450" y2="130" stroke="#1C1917" stroke-width="2" opacity="0.15"/>
+
+  <!-- framed art on wall -->
+  <rect x="90" y="70" width="110" height="140" rx="2" fill="#FAF7F2" opacity="0.6" stroke="#1C1917" stroke-width="2" stroke-opacity="0.2"/>
+  <path d="M110 190 L145 130 L170 165 L190 140 L190 190 Z" fill="#A8442E" opacity="0.4"/>
+
+  <!-- floor line -->
+  <line x1="0" y1="330" x2="500" y2="330" stroke="#1C1917" stroke-width="2" opacity="0.15"/>
+
+  <!-- console table -->
+  <rect x="60" y="300" width="380" height="16" rx="3" fill="#1C1917" opacity="0.85"/>
+  <rect x="80" y="316" width="14" height="90" fill="#1C1917" opacity="0.85"/>
+  <rect x="406" y="316" width="14" height="90" fill="#1C1917" opacity="0.85"/>
+
+  <!-- folded throw on table -->
+  <rect x="90" y="260" width="130" height="30" rx="6" fill="#A8442E"/>
+  <rect x="100" y="240" width="110" height="26" rx="6" fill="#2F4538"/>
+  <line x1="105" y1="253" x2="205" y2="253" stroke="#FAF7F2" stroke-width="1.5" opacity="0.2"/>
+
+  <!-- vase with stems -->
+  <path d="M295 300 C291 275, 288 260, 293 248 C296 242, 293 232, 300 224 C303 220, 327 220, 330 224 C337 232, 334 242, 337 248 C342 260, 339 275, 335 300 Z" fill="#2F4538"/>
+  <path d="M312 224 C308 190, 298 175, 288 160" stroke="#A8442E" stroke-width="3" fill="none" stroke-linecap="round"/>
+  <path d="M318 224 C322 185, 332 170, 340 150" stroke="#A8442E" stroke-width="3" fill="none" stroke-linecap="round"/>
+  <path d="M315 224 C315 180, 315 165, 315 145" stroke="#A8442E" stroke-width="3" fill="none" stroke-linecap="round"/>
+  <ellipse cx="288" cy="160" rx="9" ry="4" fill="#A8442E" transform="rotate(-30 288 160)"/>
+  <ellipse cx="340" cy="150" rx="9" ry="4" fill="#A8442E" transform="rotate(25 340 150)"/>
+
+  <!-- candle -->
+  <path d="M350 300 L350 270 C350 265, 375 265, 375 270 L375 300 Z" fill="#E7DCC8"/>
+  <ellipse cx="362.5" cy="270" rx="12.5" ry="4" fill="#A8442E"/>
+  <line x1="362.5" y1="270" x2="362.5" y2="258" stroke="#1C1917" stroke-width="2" stroke-linecap="round"/>
+  <path d="M362.5 258 C359 251, 361 246, 362.5 242 C365 246, 366 251, 362.5 258 Z" fill="#A8442E"/>
+
+  <!-- small ceramic bowl -->
+  <path d="M225 296 C225 285, 260 285, 260 296 L256 306 C248 312, 237 312, 229 306 Z" fill="#A8442E" opacity="0.85"/>
+
+  <!-- rug hint -->
+  <ellipse cx="250" cy="420" rx="200" ry="30" fill="#1C1917" opacity="0.06"/>
+</svg>
