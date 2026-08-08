@@ -107,6 +107,7 @@ if (!ID) {
         }
 
         alert("Item added to cart!")
+        location.reload()
 
         
 
@@ -134,6 +135,7 @@ if (badgeSession.data.session !== null) {
     })
 
     document.getElementById("cart-badge").textContent = totalItems
+    
 } else {
     document.getElementById("cart-badge").textContent = "0"
 }
