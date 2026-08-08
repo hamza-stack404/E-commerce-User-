@@ -5,6 +5,43 @@ const supabase = createClient(
   'sb_publishable_WGnKsKQ2RiZDYae8ohc5GA_xXjCStUg'
 )
 
+let SessionCheck = await supabase.auth.getSession()
+
+if (SessionCheck.data.session !== null) {
+    let CheckoutUser = SessionCheck.data.session.user.id
+
+    let liveCart = await supabase.from("cart_items").select("*, products(name , price, image_url)").eq("user_id", CheckoutUser)
+
+    let livetotal = 0
+    let itemhtml = ""
+
+    liveCart.data.forEach(item => {
+        livetotal = livetotal + (item.products.price * item.quantity)
+
+        itemhtml += `<div class="flex gap-4">
+            <div class="w-14 h-16 bg-[#EFEAE0] rounded-sm shrink-0 flex items-center justify-center text-ink/20 font-serif text-[9px]">Photo</div>
+            <div class="flex-1 flex justify-between items-start">
+                <div>
+                    <p class="text-sm font-medium">${item.products.name}</p>
+                    <p class="text-xs text-ink/40">Qty ${item.quantity}</p>
+                </div>
+                <p class="text-sm">$${item.products.price}</p>
+            </div>
+        </div>` 
+        
+    });
+
+     document.getElementById("checkout-items").innerHTML = itemhtml
+    document.getElementById("checkout-subtotal").textContent = "$" + livetotal.toFixed(2)
+    document.getElementById("checkout-total").textContent = "$" + livetotal.toFixed(2)
+    document.getElementById("checkout-submit-btn").textContent = "Place Order — $" + livetotal.toFixed(2)
+
+
+
+}
+
+
+
 let Form = document.getElementById("checkout-form")
 Form.addEventListener("submit", async (stop) => {
     stop.preventDefault()
