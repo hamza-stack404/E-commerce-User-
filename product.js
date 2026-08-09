@@ -27,7 +27,7 @@ if (!ID) {
     allResult.data.forEach(function (product) {
         cardsHTML += `<a href="product.html?id=${product.id}" class="group block">
             ${product.image_url 
-                ? `<img src="${product.image_url}" class="aspect-[3/4] object-cover rounded-sm mb-4 w-full">` 
+                ? `<img src="${product.image_url}" alt="${product.name}" class="aspect-[3/4] object-cover rounded-sm mb-4 w-full">` 
                 : `<div class="aspect-[3/4] bg-[#EFEAE0] rounded-sm mb-4 flex items-center justify-center text-ink/20 font-serif text-xs">Product photo</div>`
             }
             <p class="text-xs text-ink/40 mb-1">${product.categories ? product.categories.name : ""}</p>
