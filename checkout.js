@@ -16,7 +16,7 @@ if (SessionCheck.data.session !== null) {
     let itemhtml = ""
 
     liveCart.data.forEach(item => {
-        livetotal = livetotal + (item.products.price * item.quantity)
+        livesubtotal = livesubtotal + (item.products.price * item.quantity)
 
         itemhtml += `<div class="flex gap-4">
             <div class="w-14 h-16 bg-[#EFEAE0] rounded-sm shrink-0 flex items-center justify-center text-ink/20 font-serif text-[9px]">Photo</div>
