@@ -50,7 +50,7 @@ if (!ID) {
     
 
         if (product.image_url) {
-            document.getElementById("product-main-image").innerHTML = `<img src="${product.image_url}" class="w-full h-full object-cover rounded-sm">`
+            document.getElementById("product-main-image").innerHTML = `<img src="${product.image_url}" alt="${product.name}" class="w-full h-full object-cover rounded-sm">`
         }
 
         let relatedResult = await supabase.from("products")
@@ -64,7 +64,7 @@ if (!ID) {
         relatedResult.data.forEach(function (relatedProduct) {
             relatedHTML += `<a href="product.html?id=${relatedProduct.id}" class="group block">
                 ${relatedProduct.image_url 
-                    ? `<img src="${relatedProduct.image_url}" class="aspect-[3/4] object-cover rounded-sm mb-4 w-full">` 
+                    ? `<img src="${relatedProduct.image_url}" alt="${relatedProduct.name}" class="aspect-[3/4] object-cover rounded-sm mb-4 w-full">` 
                     : `<div class="aspect-[3/4] bg-[#EFEAE0] rounded-sm mb-4 flex items-center justify-center text-ink/20 font-serif text-xs">Product photo</div>`
                 }
                 <p class="text-xs text-ink/40 mb-1">${relatedProduct.categories ? relatedProduct.categories.name : ""}</p>
