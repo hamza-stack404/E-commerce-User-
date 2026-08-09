@@ -15,7 +15,7 @@ if (result.error) {
     let CardHtml = ""
 
     result.data.forEach(category => {
-        CardHtml += `<a href="product.html" class="group block border border-ink/10 rounded-sm overflow-hidden">
+        CardHtml += `<a href="product.html?category=${category.id}" class="group block border border-ink/10 rounded-sm overflow-hidden">
         ${category.image_url 
         ? `<img src="${category.image_url}" class="aspect-[4/3] object-cover w-full">` 
         : `<div class="aspect-[4/3] bg-[#EFEAE0] flex items-center justify-center text-ink/20 font-serif text-xs">Category photo</div>`

@@ -8,12 +8,20 @@ const supabase = createClient(
 let param = new URLSearchParams(window.location.search)
 let ID = param.get("id")
 
+let categoryParam = param.get("category")
+
 
 if (!ID) {
     document.getElementById("product-detail-section").classList.add("hidden")
     document.getElementById("shop-all-section").classList.remove("hidden")
 
-    let allResult = await supabase.from("products").select("*, categories(name)")
+    let query = supabase.from("products").select("*, categories(name)")
+
+    if (categoryParam) {
+        query = query.eq("category_id", categoryParam)
+    }
+
+    let allResult = await query
 
     let cardsHTML = ""
     allResult.data.forEach(function (product) {
