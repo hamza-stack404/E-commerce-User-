@@ -57,3 +57,4 @@ if (badgeSession.data.session !== null) {
 } else {
     document.getElementById("cart-badge").textContent = "0"
 }
+

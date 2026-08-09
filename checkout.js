@@ -12,7 +12,7 @@ if (SessionCheck.data.session !== null) {
 
     let liveCart = await supabase.from("cart_items").select("*, products(name , price, image_url)").eq("user_id", CheckoutUser)
 
-    let livetotal = 0
+    let livesubtotal = 0
     let itemhtml = ""
 
     liveCart.data.forEach(item => {
@@ -31,8 +31,12 @@ if (SessionCheck.data.session !== null) {
         
     });
 
+    let livetax = livesubtotal * 0.08
+    let livetotal = livesubtotal + livetax
+
      document.getElementById("checkout-items").innerHTML = itemhtml
-    document.getElementById("checkout-subtotal").textContent = "$" + livetotal.toFixed(2)
+    document.getElementById("checkout-subtotal").textContent = "$" + livesubtotal.toFixed(2)
+    document.getElementById("checkout-tax").textContent = "$" + livetax.toFixed(2)
     document.getElementById("checkout-total").textContent = "$" + livetotal.toFixed(2)
     document.getElementById("checkout-submit-btn").textContent = "Place Order — $" + livetotal.toFixed(2)
 
@@ -68,7 +72,7 @@ Form.addEventListener("submit", async (stop) => {
         let order = await supabase.from("orders").insert({
             user_id: userID,
             status: "pending",
-            total: subtotal
+            total: subtotal + (subtotal * 0.08)
         }).select()
 
 
