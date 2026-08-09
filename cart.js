@@ -42,8 +42,12 @@ result.data.forEach(item => {
 
 });
 
+let tax = subtotal * 0.08
+let total = subtotal + tax
+
 document.getElementById("cart-subtotal").textContent = "$" + subtotal.toFixed(2)
 document.getElementById("cart-total").textContent = "$" + subtotal.toFixed(2)
+document.getElementById("cart-tax").textContent = "$" + tax.toFixed(2)
 
 document.getElementById("cart-items").innerHTML = itemHtml
 
