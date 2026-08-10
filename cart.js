@@ -20,7 +20,7 @@ let userID = User.data.session.user.id
 let subtotal = 0
 let itemHtml = ""
 
-if (result.data.length > 0 ) {
+if (result.data.length === 0 ) {
     itemsHTML = `<div class="py-16 text-center">
         <p class="font-serif text-xl mb-3">Your cart is empty</p>
         <p class="text-ink/50 text-sm mb-6">Looks like you haven't added anything yet.</p>
