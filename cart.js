@@ -20,7 +20,14 @@ let userID = User.data.session.user.id
 let subtotal = 0
 let itemHtml = ""
 
-result.data.forEach(item => {
+if (result.data.length > 0 ) {
+    itemsHTML = `<div class="py-16 text-center">
+        <p class="font-serif text-xl mb-3">Your cart is empty</p>
+        <p class="text-ink/50 text-sm mb-6">Looks like you haven't added anything yet.</p>
+        <a href="product.html" class="inline-block bg-ink text-ivory px-6 py-3 text-sm font-medium hover:bg-rust">Start Shopping</a>
+    </div>`
+} else {
+    result.data.forEach(item => {
   
   subtotal = subtotal + (item.products.price * item.quantity)
 
@@ -47,6 +54,7 @@ result.data.forEach(item => {
 </div>`
 
 });
+}
 
 let tax = subtotal * 0.08
 let total = subtotal + tax
