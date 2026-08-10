@@ -42,7 +42,7 @@ if (!ID) {
     
 
         if (product.image_url) {
-            document.getElementById("product-main-image").innerHTML = `<img src="${product.image_url}" alt="${product.name}" class="w-full h-full object-cover rounded-sm">`
+            document.getElementById("product-main-image").innerHTML = `<img src="${product.image_url}" alt="${product.name}" loading="lazy" class="w-full h-full object-cover rounded-sm">`
         }
 
         let relatedResult = await supabase.from("products")

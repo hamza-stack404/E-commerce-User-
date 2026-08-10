@@ -35,7 +35,7 @@ let savedHTML = ""
 savedResult.data.forEach(function (saved) {
     savedHTML += `<a href="product.html?id=${saved.products.id}" class="group block">
         ${saved.products.image_url 
-            ? `<img src="${saved.products.image_url}" alt="${saved.products.name}" class="aspect-[3/4] object-cover rounded-sm mb-4 w-full">` 
+            ? `<img src="${saved.products.image_url}" alt="${saved.products.name}" loading="lazy" class="aspect-[3/4] object-cover rounded-sm mb-4 w-full">` 
             : `<div class="aspect-[3/4] bg-[#EFEAE0] rounded-sm mb-4 flex items-center justify-center text-ink/20 font-serif text-xs">Product photo</div>`
         }
         <p class="font-medium text-sm group-hover:text-rust">${saved.products.name}</p>
