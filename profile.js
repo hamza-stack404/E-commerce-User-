@@ -31,6 +31,26 @@ if (User.data.session === null) {
 
 
 
+    let savedResult = await supabase.from("saved_items")
+    .select("*, products(id, name, price, image_url)")
+    .eq("user_id", userId)
+
+let savedHTML = ""
+
+savedResult.data.forEach(function (saved) {
+    savedHTML += `<a href="product.html?id=${saved.products.id}" class="group block">
+        ${saved.products.image_url 
+            ? `<img src="${saved.products.image_url}" alt="${saved.products.name}" class="aspect-[3/4] object-cover rounded-sm mb-4 w-full">` 
+            : `<div class="aspect-[3/4] bg-[#EFEAE0] rounded-sm mb-4 flex items-center justify-center text-ink/20 font-serif text-xs">Product photo</div>`
+        }
+        <p class="font-medium text-sm group-hover:text-rust">${saved.products.name}</p>
+        <p class="text-ink/60 text-sm mt-1">$${saved.products.price}</p>
+    </a>`
+})
+
+document.getElementById("saved-items-grid").innerHTML = savedHTML
+
+
     let ordersHTML = ""
 
 ordersResult.data.forEach(order => {
