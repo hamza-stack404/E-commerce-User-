@@ -1,14 +1,10 @@
-import { createClient } from 'https://esm.sh/@supabase/supabase-js@2'
+import { supabase } from './supabase-client.js'
+import { requireAuth } from './auth-guard.js'
 
-const supabase = createClient(
-  'https://adjnbxmurtwfykpfthei.supabase.co',
-  'sb_publishable_WGnKsKQ2RiZDYae8ohc5GA_xXjCStUg'
-)
+let user = await requireAuth()
 
-let SessionCheck = await supabase.auth.getSession()
-
-if (SessionCheck.data.session !== null) {
-    let CheckoutUser = SessionCheck.data.session.user.id
+if (user) {
+    let CheckoutUser = user.id
 
     let liveCart = await supabase.from("cart_items").select("*, products(name , price, image_url)").eq("user_id", CheckoutUser)
 
@@ -50,14 +46,10 @@ let Form = document.getElementById("checkout-form")
 Form.addEventListener("submit", async (stop) => {
     stop.preventDefault()
 
-    let User = await supabase.auth.getSession()
+    let user = await requireAuth()
+    if (!user) return
 
-    if (User.data.session === null) {
-        window.location.href = "login.html"
-        return
-    } else {
-        
-        let userID = User.data.session.user.id
+    let userID = user.id
 
         let cartResult = await supabase.from("cart_items").select("*, products(name, price)").eq("user_id", userID)
 
@@ -106,4 +98,4 @@ Form.addEventListener("submit", async (stop) => {
         window.location.href = "Profile.html"
 
     }
-})
+)

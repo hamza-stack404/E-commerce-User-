@@ -1,9 +1,4 @@
-import { createClient } from 'https://esm.sh/@supabase/supabase-js@2'
-
-const supabase = createClient(
-  'https://adjnbxmurtwfykpfthei.supabase.co',
-  'sb_publishable_WGnKsKQ2RiZDYae8ohc5GA_xXjCStUg'
-)
+import { supabase } from './supabase-client.js'
 
 let Form = document.getElementById("signup-form")
 

@@ -1,10 +1,9 @@
-import { createClient } from 'https://esm.sh/@supabase/supabase-js@2'
+import { supabase } from './supabase-client.js'
 import { renderProductCard } from './utils.js'
+import { setupHeader } from './header.js'
+import { requireAuth } from './auth-guard.js'
 
-const supabase = createClient(
-  'https://adjnbxmurtwfykpfthei.supabase.co',
-  'sb_publishable_WGnKsKQ2RiZDYae8ohc5GA_xXjCStUg'
-)
+
 
 let param = new URLSearchParams(window.location.search)
 let ID = param.get("id")
@@ -77,14 +76,10 @@ if (!ID) {
      document.getElementById("add-to-cart-btn").addEventListener('click', async () => {
         let Quantity = Number(document.getElementById("qty-input").value)
 
-        let User = await supabase.auth.getSession()
+        let user = await requireAuth()
+        if (!user) return
 
-        if (User.data.session === null) {
-            window.location.href = "login.html"
-            return
-        }
-
-        let userid = User.data.session.user.id
+        let userid = user.id
 
         let existing = await supabase.from("cart_items").select("*").eq("user_id", userid).eq("product_id", ID)
 
@@ -107,15 +102,10 @@ if (!ID) {
     })  
 
     document.getElementById("save-for-later-btn").addEventListener("click", async () => {
-    let Savesession = await supabase.auth.getSession()
+    let user = await requireAuth()
+    if (!user) return
 
-    if (Savesession.data.session === null) {
-        window.location.href = "login.html"
-        return
-
-    }
-
-    let userid = Savesession.data.session.user.id
+    let userid = user.id
 
     let existingSaved = await supabase.from("saved_items").select("*").eq("user_id", userid).eq("product_id", ID)
 
@@ -133,30 +123,7 @@ if (!ID) {
 }  
 
 
-let accountSessionCheck = await supabase.auth.getSession()
-
-if (accountSessionCheck.data.session !== null) {
-    document.getElementById("account-link").href = "Profile.html"
-}
-
-
-let badgeSession = await supabase.auth.getSession()
-
-if (badgeSession.data.session !== null) {
-    let badgeUserId = badgeSession.data.session.user.id
-
-    let cartCountResult = await supabase.from("cart_items").select("quantity").eq("user_id", badgeUserId)
-
-    let totalItems = 0
-    cartCountResult.data.forEach(item => {
-        totalItems = totalItems + item.quantity
-    })
-
-    document.getElementById("cart-badge").textContent = totalItems
-    
-} else {
-    document.getElementById("cart-badge").textContent = "0"
-}
+await setupHeader()
 
 
 
