@@ -30,6 +30,16 @@ if (accountSessionCheck.data.session !== null) {
     document.getElementById("account-link").href = "Profile.html"
 }
 
+let pillsResult = await supabase.from("categories").select("*")
+
+let pillsHTML = ""
+
+pillsResult.data.forEach(function (category) {
+    pillsHTML += `<a href="product.html?category=${category.id}" class="shrink-0 px-6 py-3 border border-ink/15 rounded-full text-sm font-medium hover:border-rust hover:text-rust">${category.name}</a>`
+})
+
+document.getElementById("category-pills").innerHTML = pillsHTML
+
 
 
 let badgeSession = await supabase.auth.getSession()
