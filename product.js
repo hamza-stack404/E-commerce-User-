@@ -1,4 +1,5 @@
 import { createClient } from 'https://esm.sh/@supabase/supabase-js@2'
+import { renderProductCard } from './utils.js'
 
 const supabase = createClient(
   'https://adjnbxmurtwfykpfthei.supabase.co',
