@@ -31,3 +31,10 @@ pillsResult.data.forEach(function (category) {
 })
 
 document.getElementById("category-pills").innerHTML = pillsHTML
+
+
+document.getElementById("newsletter-form").addEventListener("submit", function (e) {
+    e.preventDefault()
+    document.getElementById("newsletter-form").innerHTML = `<p class="text-sm text-forest">Thanks for subscribing! Keep an eye on your inbox.</p>`
+
+})
