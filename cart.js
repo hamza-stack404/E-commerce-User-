@@ -34,8 +34,14 @@ result.data.forEach(item => {
             <p class="font-medium">$${item.products.price}</p>
         </div>
         <div class="flex items-center justify-between">
-            <p class="text-sm text-ink/60">Qty: ${item.quantity}</p>
+        <div class="flex items-center gap-3">
+            <div class="flex items-center border border-ink/20 rounded-sm">
+                <button onclick="changeQty('${item.id}', ${item.quantity}, -1)" class="w-7 h-7 flex items-center justify-center hover:text-rust text-sm">−</button>
+                <span class="w-8 text-center text-sm">${item.quantity}</span>
+                <button onclick="changeQty('${item.id}', ${item.quantity}, 1)" class="w-7 h-7 flex items-center justify-center hover:text-rust text-sm">+</button>
+            </div>
             <button onclick="removeFromCart('${item.id}')" class="text-xs text-ink/40 hover:text-rust underline underline-offset-2">Remove</button>
+        </div>
         </div>
     </div>
 </div>`
@@ -66,6 +72,20 @@ window.removeFromCart = async (id) =>{
       }
   }
 }
+}
+
+window.changeQty = async function (cartItemId, currentQty, direction) {
+    let newQty = currentQty + direction
+
+    if (newQty < 1) {
+        return
+    }
+
+    let result = await supabase.from("cart_items").update({ quantity: newQty }).eq("id", cartItemId)
+
+    if (!result.error) {
+        location.reload()
+    }
 }
 
 
