@@ -120,6 +120,31 @@ if (!ID) {
         
 
     })  
+
+    document.getElementById("save-for-later-btn").addEventListener("click", async () => {
+    let Savesession = await supabase.auth.getSession()
+
+    if (Savesession.data.session === null) {
+        window.location.href = "login.html"
+        return
+
+    }
+
+    let userid = Savesession.data.session.user.id
+
+    let existingSaved = await supabase.from("saved_items").select("*").eq("user_id", userid).eq("product_id", ID)
+
+
+    if (existingSaved.data.length > 0) {
+        alert("Already saved!")
+    } else {
+        await supabase.from("saved_items").insert({
+       user_id: userid,
+       product_id: ID
+   })
+   alert("Saved for later!")
+    }
+})
 }  
 
 
@@ -147,5 +172,6 @@ if (badgeSession.data.session !== null) {
 } else {
     document.getElementById("cart-badge").textContent = "0"
 }
+
 
 
