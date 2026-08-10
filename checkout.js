@@ -75,6 +75,11 @@ Form.addEventListener("submit", async (stop) => {
             total: subtotal + (subtotal * 0.08)
         }).select()
 
+        if (order.error) {
+            alert("Something went wrong placing your order. Please try again.")
+            return
+        }
+
 
         let new_order = order.data[0].id
 
@@ -89,7 +94,12 @@ Form.addEventListener("submit", async (stop) => {
             })
         });
 
-        let items = await supabase.from("order_items").insert(order_item) 
+        let items = await supabase.from("order_items").insert(order_item)
+        
+        if (items.error) {
+            alert("Something went wrong saving your order items. Please contact support.")
+            return
+        }
 
         let delete_cart = await supabase.from("cart_items").delete().eq("user_id", userID)
 
